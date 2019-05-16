@@ -1,8 +1,7 @@
 #-*- coding: UTF-8 -*-
 from flask import Flask , url_for, render_template ,request
 import os, sys
-reload(sys)
-sys.setdefaultencoding('utf-8')
+
 
 app = Flask(__name__)
 
@@ -16,6 +15,7 @@ def index():
         for suffix in legal_suffix :
             if suffix in video_file.split('.')[-1].upper(): # Check file in list have a suffix of webm, mp4 or ogg. 
                 video_exist = True
+                print(files)
                 return render_template('index.html', files=files)
     return render_template('404.html', error="Video directory is empty!"), 404
 

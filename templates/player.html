@@ -12,13 +12,13 @@
 		<div class="player">
 	   	 	<video poster="" controls crossorigin>
 	        	<!-- firefox支持不完善，android、chrome工作良好 支持webm、mp4、ogg格式-->
-	        	<source src="{{ url_for('static', filename='video/' + video_file.encode('utf-8') ) }}" type="video/{{ video_file.split('.')[-1] }}">
+	        	<source src="{{ url_for('static', filename='video/' + video_file) }}" type="video/{{ video_file.split('.')[-1] }}">
 	        		
 	        	<!-- Text track file 字幕文件
 	        	<track kind="captions" label="English captions" src="https://cdn.selz.com/plyr/1.0/movie_captions_en.vtt" srclang="en" default>
 				-->
 				<!-- Fallback for browsers that don't support the <video> element -->
-	        	<a href="{{ url_for('static', filename='video/' + video_file.encode('utf-8') ) }}">下载</a>
+	        	<a href="{{ url_for('static', filename='video/' + video_file ) }}">下载</a>
 	    	</video>
 		</div>
 	{% else %}
@@ -60,7 +60,7 @@
 
 <script type="text/javascript">
 	/* 尝试失败。。。Flvplayer不支持unicode ,先将就用吧*/
-	videouri = encodeURI({{ url_for('static', filename='video/' + video_file.encode('utf-8') ) }});
+	videouri = encodeURI({{ url_for('static', filename='video/' + video_file ) }});
 	document.getElementById("swfplayer").flashvars="vcastr_file=" + videouri;
 </script>
 
