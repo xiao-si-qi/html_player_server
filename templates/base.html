@@ -12,14 +12,23 @@
             }
 
             body {
-                background: url(/static/img/bj.jpg);
+                background: #ccdeed;
                 background-repeat: no-repeat;
                 background-origin: content-box;
             }
 
+            .header {
+                background: url(/static/img/headImg.png);
+                height: 180px;
+                position: relative;
+                z-index: 199;
+                background-position: center 0px;
+                background-repeat: no-repeat;
+            }
+
             .content {
                 zoom: 1;
-                padding: 5px;
+                padding: 20px;
                 background: rgba(255, 255, 255, 0.9);
             }
 
@@ -108,7 +117,7 @@
             {#宽度大于1200px时，pc端#}
                 .content {
                     width: 1200px;
-                    margin: auto
+                    margin: 5px auto
                 }
 
                 .videoListBox {

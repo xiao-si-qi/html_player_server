@@ -2,10 +2,10 @@
 {% block title %}正在播放 - {{ video_file[0:-4] }}{% endblock %}
 {% block page_content %}
 
-
+   <div class="header"></div>
+        <div class="content">
         <h1>视频播放器</h1>
             <p align="center">{{ video_file }}</p>
-        <div class="content">
           <div class="middleBox">
                 {% if "AppleWebKit" in user_agent %}
                     <div class="player">
@@ -29,7 +29,7 @@
                             <param name="quality" value="high"/>
                             <param name="allowFullScreen" value="true"/>
                             <param name="FlashVars"
-                                   value="vcastr_file={{ url_for('static', filename='video/' + video_file.encode('utf-8') ) }}"/>
+                                   value="vcastr_file={{ url_for('static', filename='video/' + video_file ) }}"/>
                         {% else %}
                             <embed id="swfplayer" src="{{ url_for('static', filename='Flvplayer.swf') }}"
                                    allowfullscreen="true" quality="high"
@@ -39,7 +39,7 @@
                             <!-- Fallback for browsers that don't support the <video> element -->
                             <br>
                             如果不能播放，你可以
-                            <a href="{{ url_for('static', filename='video/' + video_file.encode('utf-8') ) }}">下载</a>
+                            <a href="{{ url_for('static', filename='video/' + video_file ) }}">下载</a>
                         {% endif %}
                     </object>
                 {% endif %}
@@ -48,9 +48,10 @@
             <h2>播放列表</h2>
         <div class="videoListBox">
              <table class="tableBox" align="center" border="1" cellpadding="10">
-                {% for filename in files %}
+                {% for filename in videolist %}
                     <tr align=left>
-                        <td><a href="{{ url_for('play', video_file=filename ) }}">{{ filename }}</a></td>
+
+                        <td><a href="{{ url_for('play', video_file=(path+"/"+filename).replace('/','&') ) }}">{{ filename }}</a></td>
                     </tr>
                 {% endfor %}
             </table>

@@ -2,18 +2,26 @@
 
 {% block title %}家庭视频点播系统{% endblock %}
 {% block page_content %}
+    <div class="header">
+    </div>
 
-     <div class="content">
-     <h1>家庭视频点播系统</h1>
-     <h2>视频文件列表</h2>
-	<table class="tableBox" align="center" border="1" cellpadding="10">
-		<tr align=left><th>文件类型</th><th>视频名称</th></tr>
-
-		{% for filename in files %}
-			<tr align=left><td>{{ filename.split('.')[-1] }}</td><td><a href="{{ url_for('play', video_file=filename ) }}">{{ filename }}</a></td></tr>
-		{% endfor %}
-	</table>
-</div>
+    <div class="content">
+        <h1>家庭视频点播系统</h1>
+        <h2>视频文件列表</h2>
+    <p>{{ dir }}</p>
+        <table class="tableBox" align="center" border="1" cellpadding="10">
+            <tr align=left>
+                <th>文件类型</th>
+                <th>视频名称</th>
+            </tr>
+            {% for filename in files %}
+                <tr align=left>
+                    <td>{{ filename.split('.')[-1] }}</td>
+                    <td><a href="{{ url_for('play', video_file=(dir+filename).replace('/','&') ) }}">{{ filename }}</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
     <div class="endBox">
 
     </div>
