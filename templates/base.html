@@ -1,18 +1,163 @@
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
 <html>
-	<head>
-		{% block head %}
-		<title>{% block title %}{% endblock %}</title>
-		<div class="page-header">
-			<link rel="stylesheet" href="{{ url_for('static', filename='plyr.css') }}">
-			<link rel="stylesheet" href="{{ url_for('static', filename='docs.css') }}">
-		</div>
-		{% endblock %}
-	</head>
-	<body>
-		{% block body %}
-			{% block page_content %}
-			{% endblock %}
-		{% endblock %}
-	</body>
+<head>
+    {% block head %}
+        <title>{% block title %}{% endblock %}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+
+            div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote {
+                padding: 0;
+                margin: 0;
+            }
+
+            body {
+                background: url(/static/img/bj.jpg);
+                background-repeat: no-repeat;
+                background-origin: content-box;
+            }
+
+            .content {
+                zoom: 1;
+                padding: 5px;
+                background: rgba(255, 255, 255, 0.9);
+            }
+
+            .content:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+
+            .rightBox {
+                float: left;
+                width: 20%;
+            {#margin: 5px;#} display: inline;
+                -webkit-transition: width 1s ease;
+                -moz-transition: width 1s ease;
+                -o-transition: width 1s ease;
+                -ms-transition: width 2s ease;
+                transition: width 1s ease;
+            }
+
+            .tableBox {
+                margin: auto;
+                width: 80%;
+
+            }
+
+            .middleBox {
+                float: left;
+                width: 80%;
+            {#margin: 5px;#} display: inline;
+                -webkit-transition: width 1s ease;
+                -moz-transition: width 1s ease;
+                -o-transition: width 1s ease;
+                -ms-transition: width 1s ease;
+                transition: width 1s ease;
+            }
+
+            .rightBox {
+
+            }
+
+            .videoListBox {
+                overflow-x: auto;
+                overflow-y: auto;
+                line-height: 30px;
+                text-align: center;
+            }
+
+
+            .videoListBox::-webkit-scrollbar-track-piece {
+                background-color: #fff; /*滚动条的背景颜色*/
+                -webkit-border-radius: 0; /*滚动条的圆角宽度*/
+            }
+
+            .videoListBox::-webkit-scrollbar {
+                width: 10px; /*滚动条的宽度*/
+                height: 8px; /*滚动条的高度*/
+            }
+
+            .videoListBox::-webkit-scrollbar-thumb:vertical { /*垂直滚动条的样式*/
+                height: 50px;
+                background-color: #999;
+                -webkit-border-radius: 4px;
+                outline: 2px solid #fff;
+                outline-offset: -2px;
+                border: 2px solid #fff;
+            }
+
+            .videoListBox::-webkit-scrollbar-thumb:hover { /*滚动条的hover样式*/
+                height: 50px;
+                background-color: #9f9f9f;
+                -webkit-border-radius: 4px;
+            }
+
+
+            .endBox {
+                margin: auto;
+                padding: 5px;
+                height: 50px;
+                background: rgba(205, 255, 60, 0.9);
+            }
+
+            @media only screen and (min-width: 1200px) {
+            {#宽度大于1200px时，pc端#}
+                .content {
+                    width: 1200px;
+                    margin: auto
+                }
+
+                .videoListBox {
+                    height: 535px;
+                }
+
+                .endBox {
+                    width: 1200px;
+                }
+            }
+
+            @media only screen and (min-width: 600px) and (max-width: 1200px) {
+            {#宽度在600px到1200px时 平板端#}
+                .middleBox {
+                    width: 80%;
+                }
+
+                .rightBox {
+                    width: 20%;
+                }
+
+                .videoListBox {
+                    height: 535px;
+                }
+
+            }
+
+            @media only screen and (max-width: 600px) {
+                .rightBox {
+                    width: 99%;
+                    padding: 25px 0px 0px 0px;
+                }
+
+                .middleBox {
+                    width: 99%;
+                }
+            }
+        </style>
+        <div class="page-header">
+            <link rel="stylesheet" href="{{ url_for('static', filename='plyr.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='docs.css') }}">
+        </div>
+    {% endblock %}
+
+</head>
+<body>
+{% block body %}
+    {% block page_content %}
+    {% endblock %}
+{% endblock %}
+</body>
 </html>
