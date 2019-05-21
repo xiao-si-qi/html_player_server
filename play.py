@@ -7,7 +7,7 @@ photo_format = ( 'JPEG', 'PNG', 'GIF','JPG' )
 
 @app.route('/')
 def index():
-    files = os.listdir('static/video')
+    files = os.listdir('static/file')
     return render_template('index.html', files=files,dir="")
 
 
@@ -19,12 +19,12 @@ def play(video_file):
     print(video_file)
     #在get 传文件路路径时，使用“&”作为分隔符，在程序内部使用“/”作为分隔符，在这里进行转换
 
-    if os.path.isdir('static/video/' + video_file) : #判断路径是否为文件夹，是则返回文件列表模板
-        files = os.listdir('static/video/'+ video_file)
+    if os.path.isdir('static/file/' + video_file) : #判断路径是否为文件夹，是则返回文件列表模板
+        files = os.listdir('static/file/'+ video_file)
         return render_template('index.html', files=files,dir=video_file+"/")
 
-    elif os.path.exists('static/video/' + video_file) and video_file.split('.')[-1].upper()in photo_format:#判断路径是否为图片，返回图片展示模板
-        files = os.listdir(os.path.split('static/video/' + video_file)[0])  # 得到当前文件所在的目录
+    elif os.path.exists('static/file/' + video_file) and video_file.split('.')[-1].upper()in photo_format:#判断路径是否为图片，返回图片展示模板
+        files = os.listdir(os.path.split('static/file/' + video_file)[0])  # 得到当前文件所在的目录
         photolist = []
         for file in files:
             if file.split('.')[-1].upper() in photo_format:  # 找到当前目录的所有图片文件，展示在一个页面上
@@ -33,13 +33,15 @@ def play(video_file):
         print(path)
         return render_template('photo.html' ,path=path,photolist=photolist)
 
-    elif os.path.exists('static/video/' + video_file) and video_file.split('.')[-1].upper()in video_format:#判断路径是否为视频，返回视频播放模板
-        files = os.listdir(os.path.split('static/video/' + video_file)[0]) #得到当前文件所在的目录
+    elif os.path.exists('static/file/' + video_file) and video_file.split('.')[-1].upper()in video_format:#判断路径是否为视频，返回视频播放模板
+        files = os.listdir(os.path.split('static/file/' + video_file)[0]) #得到当前文件所在的目录
         videolist = []
         for file in files:
             if file.split('.')[-1].upper() in video_format:  # 找到当前目录的所有视频文件，作为播放页面的播放列表
                 videolist.append(file)
-        path=os.path.split(video_file)[0]+"/"
+        path=os.path.split(video_file)[0]
+        if path!="":
+            path=path+"/"
         print(path)
         return render_template('player.html', user_agent=user_agent, video_file=video_file,videolist=videolist,path=path)
     else:#不支持的文件类型返回404

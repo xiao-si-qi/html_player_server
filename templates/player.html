@@ -10,7 +10,7 @@
                 <div class="player">
                     <video poster="" controls crossorigin>
                         <!-- firefox支持不完善，android、chrome工作良好 支持webm、mp4、ogg格式-->
-                        <source src="{{ url_for('static', filename='video/' + video_file) }}"
+                        <source src="{{ url_for('static', filename='file/' + video_file) }}"
                                 type="video/{{ video_file.split('.')[-1] }}">
                         <!-- Text track file 字幕文件
                         <track kind="captions" label="English captions" src="https://cdn.selz.com/plyr/1.0/movie_captions_en.vtt" srclang="en" default>
@@ -27,7 +27,7 @@
                         <param name="quality" value="high"/>
                         <param name="allowFullScreen" value="true"/>
                         <param name="FlashVars"
-                               value="vcastr_file={{ url_for('static', filename='video/' + video_file ) }}"/>
+                               value="vcastr_file={{ url_for('static', filename='file/' + video_file ) }}"/>
                     {% else %}
                         <embed id="swfplayer" src="{{ url_for('static', filename='Flvplayer.swf') }}"
                                allowfullscreen="true" quality="high"
@@ -37,7 +37,7 @@
                         <!-- Fallback for browsers that don't support the <video> element -->
                         <br>
                         如果不能播放，你可以
-                        <a href="{{ url_for('static', filename='video/' + video_file ) }}">下载</a>
+                        <a href="{{ url_for('static', filename='file/' + video_file ) }}">下载</a>
                     {% endif %}
                 </object>
             {% endif %}
@@ -48,7 +48,6 @@
                 <table class="tableBox" align="center" border="1" cellpadding="10">
                     {% for filename in videolist %}
                         <tr align=left>
-
                             <td>
                                 <a href="{{ url_for('play', video_file=(path+filename).replace('/','&') ) }}">{{ filename }}</a>
                             </td>
@@ -76,7 +75,7 @@
     </script>
     <script type="text/javascript">
         /* 尝试失败。。。Flvplayer不支持unicode ,先将就用吧*/
-        videouri = encodeURI({{ url_for('static', filename='video/' + video_file ) }});
+        videouri = encodeURI({{ url_for('static', filename='file/' + video_file ) }});
         document.getElementById("swfplayer").flashvars = "vcastr_file=" + videouri;
     </script>
     <script src="{{ url_for('static', filename='plyr.js') }}"></script>
