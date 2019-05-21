@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}图片浏览{% endblock %}
+{% block page_content %}
+ <div class="header"></div>
+    <div class="content">
+    {% for photo in photolist %}
+        <img src="/static/video/{{ path+photo }}" width="100%">
+    {% endfor %}
+    </div>
+    {% include "endBox.html" %}
+{% endblock %}
