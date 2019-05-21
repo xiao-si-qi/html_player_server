@@ -51,7 +51,7 @@
                 {% for filename in videolist %}
                     <tr align=left>
 
-                        <td><a href="{{ url_for('play', video_file=(path+"/"+filename).replace('/','&') ) }}">{{ filename }}</a></td>
+                        <td><a href="{{ url_for('play', video_file=(path+filename).replace('/','&') ) }}">{{ filename }}</a></td>
                     </tr>
                 {% endfor %}
             </table>

@@ -1,10 +1,7 @@
 #-*- coding: UTF-8 -*-
 from flask import Flask , url_for, render_template ,request
 import os, sys
-
-
 app = Flask(__name__)
-
 legal_suffix = ( 'WEBM', 'MP4', 'OGG' )
 
 @app.route('/')
