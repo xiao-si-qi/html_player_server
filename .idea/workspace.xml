@@ -2,16 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52ef4cbf-759f-4a33-83da-031149520ec6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/flv.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/flv.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/flv.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/flv.min.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/play.py" beforeDir="false" afterPath="$PROJECT_DIR$/play.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/player.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/player_swf.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/Flvplayer.swf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,12 +34,12 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="270">
-                <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="18" />
+              <first_editor relative-caret-position="60">
+                <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
               </first_editor>
               <second_editor />
             </state>
@@ -72,20 +64,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/templates/player.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
               <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/docs.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="2867" selection-start-column="2867" selection-end-column="2867" />
             </state>
           </provider>
         </entry>
@@ -290,7 +273,7 @@
       <workItem from="1558500303208" duration="2186000" />
       <workItem from="1558516398141" duration="658000" />
       <workItem from="1558517634151" duration="1273000" />
-      <workItem from="1558519255826" duration="9183000" />
+      <workItem from="1558519255826" duration="9981000" />
     </task>
     <task id="LOCAL-00001" summary="py3">
       <created>1558009830692</created>
@@ -425,22 +408,28 @@
       <option name="project" value="LOCAL" />
       <updated>1558516880056</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="加入flv.js，实现FLV视频在线播放">
+      <created>1558529111035</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1558529111035</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76210000" />
+    <option name="totallyTimeSpent" value="77008000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1936" height="1047" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7245119" visible="true" weight="0.24466951" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7245119" visible="true" weight="0.24466951" />
       <window_info id="Structure" order="1" sideWeight="0.27548808" side_tool="true" weight="0.26332623" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.33844468" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.33844468" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -490,7 +479,8 @@
     <MESSAGE value="py3" />
     <MESSAGE value="移动端适配" />
     <MESSAGE value="图片显示界面优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="图片显示界面优化" />
+    <MESSAGE value="加入flv.js，实现FLV视频在线播放" />
+    <option name="LAST_COMMIT_MESSAGE" value="加入flv.js，实现FLV视频在线播放" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/html_player_server$html_player_server.coverage" NAME="html_player_server Coverage Results" MODIFIED="1558528999041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
@@ -629,41 +619,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/docs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2867" selection-start-column="2867" selection-end-column="2867" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/sprite.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/docs.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1074">
-          <caret line="487" column="38" selection-start-line="487" selection-start-column="33" selection-end-line="487" selection-end-column="38" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/player_swf.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="567">
           <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/404.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/player.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -680,10 +642,38 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="270">
-            <caret line="9" column="18" lean-forward="true" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="18" />
+          <first_editor relative-caret-position="60">
+            <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/docs.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1074">
+          <caret line="487" column="38" selection-start-line="487" selection-start-column="33" selection-end-line="487" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="6" column="11" selection-start-line="6" selection-start-column="11" selection-end-line="6" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/docs.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="2867" selection-start-column="2867" selection-end-column="2867" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/player.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="47" column="27" selection-start-line="47" selection-start-column="27" selection-end-line="47" selection-end-column="27" />
         </state>
       </provider>
     </entry>
