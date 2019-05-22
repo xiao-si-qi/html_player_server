@@ -6,41 +6,11 @@
         <h1>视频播放器</h1>
         <p align="center">/{{ video_file }}</p>
         <div class="middleBox">
-            {% if "AppleWebKit" in user_agent %}
-                <div class="player">
-                    <video poster="" controls crossorigin>
-                        <!-- firefox支持不完善，android、chrome工作良好 支持webm、mp4、ogg格式-->
-                        <source src="{{ url_for('static', filename='file/' + video_file) }}"
-                                type="video/{{ video_file.split('.')[-1] }}">
-                        <!-- Text track file 字幕文件
-                        <track kind="captions" label="English captions" src="https://cdn.selz.com/plyr/1.0/movie_captions_en.vtt" srclang="en" default>
-                        -->
-                        <!-- Fallback for browsers that don't support the <video> element -->
-                        <a href="{{ url_for('static', filename='video/' + video_file ) }}">下载</a>
-                    </video>
-                </div>
-            {% else %}
-                <!-- 调用swf播放器，支持mp4、flv格式 已知bug，不支持中文路径名ヽ(ｏ`皿′ｏ)ﾉ、h265编码的视频只有声音没有图像 -->
-                <object class="fallbacktoswf" width="700" height="400">
-                    {% if "MSIE" in user_agent %}
-                        <param name="movie" value="{{ url_for('static', filename='Flvplayer.swf') }}"/>
-                        <param name="quality" value="high"/>
-                        <param name="allowFullScreen" value="true"/>
-                        <param name="FlashVars"
-                               value="vcastr_file={{ url_for('static', filename='file/' + video_file ) }}"/>
-                    {% else %}
-                        <embed id="swfplayer" src="{{ url_for('static', filename='Flvplayer.swf') }}"
-                               allowfullscreen="true" quality="high"
-                               pluginspage="http://www.macromedia.com/go/getflashplayer"
-                               type="application/x-shockwave-flash" width="700" height="400">
-
-                        <!-- Fallback for browsers that don't support the <video> element -->
-                        <br>
-                        如果不能播放，你可以
-                        <a href="{{ url_for('static', filename='file/' + video_file ) }}">下载</a>
-                    {% endif %}
-                </object>
-            {% endif %}
+            <div class="player">
+                <video id="videoElement" class="centeredVideo" controls autoplay>
+                    你的浏览器似乎不支持HTML5视频播放，您可以<a href="{{ url_for('static', filename='file/' + video_file ) }}">下载</a>
+                </video>
+            </div>
         </div>
         <div class="rightBox">
             <h2>播放列表</h2>
@@ -58,6 +28,21 @@
         </div>
     </div>
     {% include "endBox.html" %}
+
+
+    <script src="/static/flv.min.js"></script>
+    <script>
+        var player = document.getElementById('videoElement');
+        if (flvjs.isSupported()) {
+            var flvPlayer = flvjs.createPlayer({
+                type: '{{ video_file.split('.')[-1] }}',
+                url: '{{ url_for('static', filename='file/' + video_file ) }}'
+            });
+            flvPlayer.attachMediaElement(videoElement);
+            flvPlayer.load(); //加载
+        }
+    </script>
+
     <script type="text/javascript">
         (function (d, p) {
             var a = new XMLHttpRequest(),
@@ -71,16 +56,9 @@
                 b.insertBefore(c, b.childNodes[0]);
             }
         })(document, "{{ url_for('static', filename='sprite.svg') }}");
-
-    </script>
-    <script type="text/javascript">
-        /* 尝试失败。。。Flvplayer不支持unicode ,先将就用吧*/
-        videouri = encodeURI({{ url_for('static', filename='file/' + video_file ) }});
-        document.getElementById("swfplayer").flashvars = "vcastr_file=" + videouri;
     </script>
     <script src="{{ url_for('static', filename='plyr.js') }}"></script>
     <!-- Docs script -->
     <script src="{{ url_for('static', filename='docs.js') }}"></script>
-
 {% endblock %}
 
