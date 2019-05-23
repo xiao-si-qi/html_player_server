@@ -24,23 +24,34 @@
                         </tr>
                     {% endfor %}
                 </table>
+
             </div>
         </div>
     </div>
+    <a href="{{ url_for('static', filename='file/' + video_file ) }}">下载</a>
     {% include "endBox.html" %}
 
 
     <script src="/static/flv.min.js"></script>
     <script>
-        var player = document.getElementById('videoElement');
-        if (flvjs.isSupported()) {
-            var flvPlayer = flvjs.createPlayer({
-                type: '{{ video_file.split('.')[-1] }}',
-                url: '{{ url_for('static', filename='file/' + video_file ) }}'
-            });
-            flvPlayer.attachMediaElement(videoElement);
-            flvPlayer.load(); //加载
+
+        var videoElement = document.getElementById('videoElement');
+        console.log(flvjs.isSupported());
+        console.log(flvjs.getFeatureList());
+
+        {# 当播放文件时flv，滨崎浏览器不支持flv.js时 ，弹出警告框#}
+        if (!flvjs.isSupported() && ('{{ video_file.split('.')[-1] }}'.toLowerCase()) == 'flv') {
+            alert("你的浏览器版本不支持FLV，将只能播放MP4文件，您的浏览器太垃圾，建议您换浏览器！")
         }
+        var flvPlayer = flvjs.createPlayer({
+            type: '{{ video_file.split('.')[-1] }}',
+            url: '{{ url_for('static', filename='file/' + video_file ) }}'
+        });
+        flvPlayer.attachMediaElement(videoElement);
+        flvPlayer.load(); //加载
+
+
+
     </script>
     <script type="text/javascript">
         (function (d, p) {
