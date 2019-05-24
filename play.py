@@ -5,9 +5,21 @@ app = Flask(__name__)
 video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV' )
 photo_format = ( 'JPEG', 'PNG', 'GIF','JPG' )
 
+def get_file_list(file_path):#返回按日期排序的文件列表
+    dir_list = os.listdir(file_path)
+    if not dir_list:
+        return
+    else:
+        # 注意，这里使用lambda表达式，将文件按照最后修改时间顺序升序排列
+        # os.path.getmtime() 函数是获取文件最后修改时间
+        # os.path.getctime() 函数是获取文件最后创建时间
+        dir_list = sorted(dir_list,  key=lambda x: os.path.getmtime(os.path.join(file_path, x)))
+        # print(dir_list)
+        return dir_list
+
 @app.route('/')
 def index():
-    files = os.listdir('static/file')
+    files = get_file_list('static/file')
     return render_template('index.html', files=files,dir="")
 
 
@@ -20,11 +32,11 @@ def play(video_file):
     #在get 传文件路路径时，使用“&”作为分隔符，在程序内部使用“/”作为分隔符，在这里进行转换
 
     if os.path.isdir('static/file/' + video_file) : #判断路径是否为文件夹，是则返回文件列表模板
-        files = os.listdir('static/file/'+ video_file)
+        files = get_file_list('static/file/'+ video_file)
         return render_template('index.html', files=files,dir=video_file+"/")
 
     elif os.path.exists('static/file/' + video_file) and video_file.split('.')[-1].upper()in photo_format:#判断路径是否为图片，返回图片展示模板
-        files = os.listdir(os.path.split('static/file/' + video_file)[0])  # 得到当前文件所在的目录
+        files = get_file_list(os.path.split('static/file/' + video_file)[0])  # 得到当前文件所在的目录
         photolist = []
         for file in files:
             if file.split('.')[-1].upper() in photo_format:  # 找到当前目录的所有图片文件，展示在一个页面上
@@ -34,7 +46,7 @@ def play(video_file):
         return render_template('photo.html' ,path=path,photolist=photolist)
 
     elif os.path.exists('static/file/' + video_file) and video_file.split('.')[-1].upper()in video_format:#判断路径是否为视频，返回视频播放模板
-        files = os.listdir(os.path.split('static/file/' + video_file)[0]) #得到当前文件所在的目录
+        files = get_file_list(os.path.split('static/file/' + video_file)[0]) #得到当前文件所在的目录
         videolist = []
         for file in files:
             if file.split('.')[-1].upper() in video_format:  # 找到当前目录的所有视频文件，作为播放页面的播放列表
@@ -49,6 +61,6 @@ def play(video_file):
         return render_template('404.html', error=" %s 不支持显示此文件!" % video_file), 404
 
 if __name__ == '__main__':
-    #app.run(port=8000)
-    app.run(debug=True, host='0.0.0.0',port=8000 )
+    app.run(port=8000)
+    #app.run(debug=True, host='0.0.0.0',port=8000 )
 
