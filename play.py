@@ -58,7 +58,11 @@ def play(video_file):
         print("video_file："+video_file)
         return render_template('player.html', user_agent=user_agent, video_file=video_file,videolist=videolist,path=path)
     else:#不支持的文件类型返回404
-        return render_template('404.html', error=" %s 不支持显示此文件!" % video_file), 404
+        return render_template('404.html', error_message="错误的路径：/"+video_file,error="不支持的文件或错误的路径!" ), 404
+
+@app.errorhandler(404)
+def miss(e):
+    return render_template('404.html',error="非法的路径"), 404
 
 if __name__ == '__main__':
     app.run(port=8000)

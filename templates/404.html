@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-
 {% block title %}404 Not Found{% endblock %}
 {% block page_content %}
+    <img class="error_img" src="/static/img/very_sorry.png">
 <h1>404 Not Found</h1>
-<br>
+{{ error_message }}<br><br>
 {{ error }}
 {% endblock %}
