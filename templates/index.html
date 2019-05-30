@@ -11,14 +11,10 @@
                 <th class="th">文件类型</th>
                 <th>文件名称</th>
             </tr>
-            {% for filename in files %}
+            {% for file in file_type %}
                 <tr>
-                {% if filename.split('.')|length==1 %}
-                    <td>文件夹</td>
-                 {% else  %}
-                    <td>{{ filename.split('.')[-1] }}</td>
-                {% endif %}
-                    <td><a href="{{ url_for('play', video_file=(dir+filename).replace('/','&') ) }}">{{ filename }}</a></td>
+                    <td>{{ file[1] }}</td>
+                    <td><a href="{{ url_for('play', video_file=(dir+file[0]).replace('/','&') ) }}">{{ file[0] }}</a></td>
                 </tr>
             {% endfor %}
         </table>

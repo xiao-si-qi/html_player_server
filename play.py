@@ -20,7 +20,14 @@ def get_file_list(file_path):#返回按日期排序的文件列表
 @app.route('/')
 def index():
     files = get_file_list('static/file')
-    return render_template('index.html', files=files,dir="")
+    file_type = []
+    for file in files: #拿到目录下的所有的文件夹和文件名，判断文件类型
+        if os.path.isdir('static/file/'+ file):
+            file_type.append([file, "文件夹"])
+        else:
+            file_type.append([file, file.split(".")[-1]])
+    return render_template('index.html', file_type=file_type, dir="")
+
 
 
 @app.route('/<video_file>')
@@ -33,7 +40,13 @@ def play(video_file):
 
     if os.path.isdir('static/file/' + video_file) : #判断路径是否为文件夹，是则返回文件列表模板
         files = get_file_list('static/file/'+ video_file)
-        return render_template('index.html', files=files,dir=video_file+"/")
+        file_type=[]
+        for file in files:#拿到该目录下的所有的文件夹和文件名，判断文件类型
+            if os.path.isdir('static/file/' + video_file+"/"+file):#判断是否为文件夹
+               file_type.append([file,"文件夹"])
+            else:
+               file_type.append([file,file.split(".")[-1]])#拿到文件的扩展名
+        return render_template('index.html', file_type=file_type,dir=video_file+"/")
 
     elif os.path.exists('static/file/' + video_file) and video_file.split('.')[-1].upper()in photo_format:#判断路径是否为图片，返回图片展示模板
         files = get_file_list(os.path.split('static/file/' + video_file)[0])  # 得到当前文件所在的目录
@@ -58,7 +71,7 @@ def play(video_file):
         print("video_file："+video_file)
         return render_template('player.html', user_agent=user_agent, video_file=video_file,videolist=videolist,path=path)
     else:#不支持的文件类型返回404
-        return render_template('404.html', error_message="错误的路径：/"+video_file,error="不支持的文件或错误的路径!" ), 404
+        return render_template('404.html', error_message="不能打开的路径：/"+video_file,error="只支展示图片类型文件和视频类型文件，不支持的文件类型或错误的路径!" ), 404
 
 @app.errorhandler(404)
 def miss(e):
