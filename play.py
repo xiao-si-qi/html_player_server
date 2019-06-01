@@ -3,7 +3,7 @@ from flask import Flask , url_for,send_from_directory, render_template ,request
 import os, sys
 app = Flask(__name__)
 video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV' )
-photo_format = ( 'JPEG', 'PNG', 'GIF','JPG' )
+photo_format = ( 'JPEG', 'PNG', 'GIF','JPG','BMP')
 
 def get_file_list(file_path):#返回按日期排序的文件列表
     dir_list = os.listdir(file_path)
@@ -70,14 +70,19 @@ def play(video_file):
         print(path)
         print("video_file："+video_file)
         return render_template('player.html', user_agent=user_agent, video_file=video_file,videolist=videolist,path=path)
-    else:#不支持的文件类型返回404
-        return render_template('404.html', error_message="不能打开的路径：/"+video_file,error="只支展示图片类型文件和视频类型文件，不支持的文件类型或错误的路径!" ), 404
+
+    elif os.path.exists('static/file/' + video_file):#不支持的文件类型返回下载界面
+        return render_template("download.html",link=video_file)
+
+
+    else:#返回错误页面
+        return render_template('404.html', error_message="打开路径出错：/"+video_file,error="不能打开此路径，可能是文件已被删除" ), 404
 
 @app.errorhandler(404)
 def miss(e):
     return render_template('404.html',error="非法的路径"), 404
 
 if __name__ == '__main__':
-    app.run(port=8000)
-    #app.run(debug=True, host='0.0.0.0',port=8000 )
+    #app.run(port=8000)
+    app.run( host='0.0.0.0',port=8000 )#host='0.0.0.0'，允许任任意IP访问
 

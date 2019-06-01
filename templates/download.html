@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}下载{% endblock %}
+{% block page_content %}
+ <div class="header"></div>
+    <div class="content">
+    <h1>只支展示图片类型文件和视频类型文件，此文件不支持展示!</h1>
+        <br>
+        <h2>您可以选择点击下方的链接下载此文件</h2>
+        <br>
+    <a href="/static/file/{{ link }}">/{{ link }}</a>
+    </div>
+    {% include "endBox.html" %}
+{% endblock %}
