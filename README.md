@@ -28,3 +28,7 @@ python play.py
 默认为127.0.0.1:8000，修改host和port需要参考[Flask](http://dormousehole.readthedocs.org/en/latest/)
 
 移动端 AOSP 和 PC 端 chrome 观看视频运行良好。
+
+运行效果截图：
+![1.png](1.png)
+![2.png](2.png)
