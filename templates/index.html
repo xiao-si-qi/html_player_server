@@ -5,16 +5,28 @@
     </div>
     <div class="content">
         <h2>文件列表</h2>
-    <p>当前文件路径：/{{ dir }}</p>
+        <p>当前文件路径：{{ dir }}</p>
+
         <table class="tableBox" align="center" border="1" cellpadding="10">
-            <tr >
+            <tr>
                 <th class="th">文件类型</th>
-                <th>文件名称</th>
+                <th>
+                    <div class="dropdown">
+                        <button class="dropbtn">文件名称</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('play', sort_typt=1,file_path=(dir[:-1]).replace('/','&') ) }}">文件名升序</a>
+                            <a href="{{ url_for('play', sort_typt=2,file_path=(dir[:-1]).replace('/','&') ) }}">文件名降序</a>
+                            <a href="{{ url_for('play', sort_typt=3,file_path=(dir[:-1]).replace('/','&') ) }}">时间升序</a>
+                            <a href="{{ url_for('play', sort_typt=4,file_path=(dir[:-1]).replace('/','&') ) }}">时间降序</a>
+                        </div>
+                    </div>
+                </th>
             </tr>
             {% for file in file_type %}
                 <tr>
                     <td>{{ file[1] }}</td>
-                    <td><a href="{{ url_for('play', video_file=(dir+file[0]).replace('/','&') ) }}">{{ file[0] }}</a></td>
+                    <td><a href="{{ url_for('play', sort_typt=sort_typt,file_path=(dir+file[0]).replace('/','&') ) }}">{{ file[0] }}</a>
+                    </td>
                 </tr>
             {% endfor %}
         </table>

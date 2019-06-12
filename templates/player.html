@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}正在播放 - {{ video_file[0:-4] }}{% endblock %}
+{% block title %}正在播放 - {{ file_path[0:-4] }}{% endblock %}
 {% block page_content %}
     <div class="header"></div>
     <div class="content">
         <h1>视频播放器</h1>
-        <p align="center">/{{ video_file }}</p>
+        <p align="center">{{ file_path }}</p>
         <div class="middleBox">
             <div class="player">
                 <video id="videoElement" class="centeredVideo" controls autoplay>
-                    你的浏览器似乎不支持HTML5视频播放，您可以<a href="{{ url_for('static', filename='file/' + video_file ) }}">下载</a>
+                    你的浏览器似乎不支持HTML5视频播放，您可以<a href="{{ url_for('static', filename='file/' + file_path ) }}">下载</a>
                 </video>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     {% for filename in videolist %}
                         <tr align=left>
                             <td>
-                                <a href="{{ url_for('play', video_file=(path+filename).replace('/','&') ) }}">{{ filename }}</a>
+                                <a href="{{ url_for('play', file_path=(path+filename).replace('/','&') ) }}">{{ filename }}</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -28,7 +28,7 @@
         </div>
 
     </div>
-    <a href="{{ url_for('static', filename='file/' + video_file ) }}">下载此视频</a>
+    <a href="{{ url_for('static', filename='file/' + file_path ) }}">下载此视频</a>
     {% include "endBox.html" %}
 
 
@@ -39,12 +39,12 @@
         console.log(flvjs.isSupported());
         console.log(flvjs.getFeatureList());
         {# 当播放文件时flv，滨崎浏览器不支持flv.js时 ，弹出警告框#}
-        if (!flvjs.isSupported() && ('{{ video_file.split('.')[-1] }}'.toLowerCase()) == 'flv') {
+        if (!flvjs.isSupported() && ('{{ file_path.split('.')[-1] }}'.toLowerCase()) == 'flv') {
             alert("你的浏览器版本不支持FLV，将只能播放MP4文件，您的浏览器太垃圾，建议您换浏览器！")
         }
         var flvPlayer = flvjs.createPlayer({
-            type: '{{ video_file.split('.')[-1] }}',
-            url: '{{ url_for('static', filename='file/' + video_file ) }}'
+            type: '{{ file_path.split('.')[-1] }}',
+            url: '{{ url_for('static', filename='file/' + file_path ) }}'
         });
         flvPlayer.attachMediaElement(videoElement);
         flvPlayer.load(); //加载

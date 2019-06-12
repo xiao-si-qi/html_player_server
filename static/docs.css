@@ -60,7 +60,6 @@ a {
     background: 0 0;
     text-decoration: none;
     color: #3498db;
-    border-bottom: 1px dotted currentColor;
     transition: background .3s ease, color .3s ease, border .3s ease
 }
 
