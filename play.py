@@ -5,7 +5,7 @@ app = Flask(__name__)
 video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV' )
 photo_format = ( 'JPEG', 'PNG', 'GIF','JPG','BMP')
 
-def get_file_list(file_path, sort_typt=1):#返回按日期排序的文件列表
+def get_file_list(file_path, sort_typt="1"):#返回按日期排序的文件列表
     dir_list = os.listdir(file_path)
     if not dir_list:
         return
