@@ -22,14 +22,22 @@
                     </div>
                 </th>
             </tr>
+
             {% for file in file_type %}
                 <tr>
                     <td>{{ file[1] }}</td>
-                    <td><a href="{{ url_for('play', sort_typt=sort_typt,file_path=(dir+file[0]).replace('/','&') ) }}">{{ file[0] }}</a>
+                    <td>
+                        <a href="{{ url_for('play', sort_typt=sort_typt,file_path=(dir+file[0]).replace('/','&') ) }}">{{ file[0] }}</a>
                     </td>
                 </tr>
             {% endfor %}
+
         </table>
+        {% if file_type ==[] %}
+            <br>
+            <br>
+            <h3>当前目录为空</h3>
+        {% endif %}
     </div>
     {% include "endBox.html" %}
 {% endblock %}

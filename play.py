@@ -52,11 +52,12 @@ def play():
     if os.path.isdir('static/file/' + file_path) : #判断路径是否为文件夹，是则返回文件列表模板
         files = get_file_list('static/file/'+ file_path,sort_typt)
         file_type=[]
-        for file in files:#拿到该目录下的所有的文件夹和文件名，判断文件类型
-            if os.path.isdir('static/file/' + file_path+"/"+file):#判断是否为文件夹
-               file_type.append([file,"文件夹"])
-            else:
-               file_type.append([file,file.split(".")[-1]])#拿到文件的扩展名
+        if files is not None:#判断文件夹是否为空
+            for file in files:#拿到该目录下的所有的文件夹和文件名，判断文件类型
+                if os.path.isdir('static/file/' + file_path+"/"+file):#判断是否为文件夹
+                   file_type.append([file,"文件夹"])
+                else:
+                   file_type.append([file,file.split(".")[-1]])#拿到文件的扩展名
         return render_template('index.html', file_type=file_type,dir=file_path+"/",sort_typt=sort_typt)
 
     elif os.path.exists('static/file/' + file_path) and file_path.split('.')[-1].upper()in photo_format:#判断路径是否为图片，返回图片展示模板
