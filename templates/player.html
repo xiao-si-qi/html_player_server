@@ -6,11 +6,7 @@
         <h1>视频播放器</h1>
         <p align="center">{{ file_path }}</p>
         <div class="middleBox">
-            <div class="player">
-                <video id="videoElement" class="centeredVideo" controls autoplay>
-                    你的浏览器似乎不支持HTML5视频播放，您可以<a href="{{ url_for('static', filename='file/' + file_path ) }}">下载</a>
-                </video>
-            </div>
+            <div id="dplayer"></div>
         </div>
         <div class="rightBox">
             <h2>播放列表</h2>
@@ -30,42 +26,18 @@
     </div>
     <a href="{{ url_for('static', filename='file/' + file_path ) }}">下载此视频</a>
     {% include "endBox.html" %}
-
-
     <script src="/static/flv.min.js"></script>
+    <script src="/static/DPlayer.min.js"></script>
     <script>
-
-        var videoElement = document.getElementById('videoElement');
-        console.log(flvjs.isSupported());
-        console.log(flvjs.getFeatureList());
-        {# 当播放文件时flv，滨崎浏览器不支持flv.js时 ，弹出警告框#}
-        if (!flvjs.isSupported() && ('{{ file_path.split('.')[-1] }}'.toLowerCase()) == 'flv') {
-            alert("你的浏览器版本不支持FLV，将只能播放MP4文件，您的浏览器太垃圾，建议您换浏览器！")
-        }
-        var flvPlayer = flvjs.createPlayer({
-            type: '{{ file_path.split('.')[-1] }}',
-            url: '{{ url_for('static', filename='file/' + file_path ) }}'
-        });
-        flvPlayer.attachMediaElement(videoElement);
-        flvPlayer.load(); //加载
-    </script>
-    <script type="text/javascript">
-        (function (d, p) {
-            var a = new XMLHttpRequest(),
-                b = d.body;
-            a.open("GET", p, true);
-            a.send();
-            a.onload = function () {
-                var c = d.createElement("div");
-                c.style.display = "none";
-                c.innerHTML = a.responseText;
-                b.insertBefore(c, b.childNodes[0]);
+        const dp = new DPlayer({
+            container: document.getElementById('dplayer'),
+            video: {
+                url: '{{ url_for('static', filename='file/' + file_path ) }}',
+                 type: '{{ file_path.split('.')[-1] }}'
             }
-        })(document, "{{ url_for('static', filename='sprite.svg') }}");
+        });
+
     </script>
-    <script src="{{ url_for('static', filename='shr.js') }}"></script>
-    <script src="{{ url_for('static', filename='plyr.js') }}"></script>
-    <!-- Docs script -->
-    <script src="{{ url_for('static', filename='docs.js') }}"></script>
+
 {% endblock %}
 
