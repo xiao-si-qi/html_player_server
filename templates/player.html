@@ -24,8 +24,9 @@
         </div>
 
     </div>
-    <a href="{{ url_for('static', filename='file/' + file_path ) }}">下载此视频</a>
+    <a href="{{ url_for('static', filename='file/' + file_path ) }} " download="">下载此视频</a>
     {% include "endBox.html" %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='DPlayer.min.css')}}">
     <script src="/static/flv.min.js"></script>
     <script src="/static/DPlayer.min.js"></script>
     <script>

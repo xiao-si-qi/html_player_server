@@ -2,7 +2,7 @@
 from flask import Flask , url_for,send_from_directory, render_template ,request,redirect
 import os, sys
 app = Flask(__name__)
-video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV' )
+video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV')
 photo_format = ( 'JPEG', 'PNG', 'GIF','JPG','BMP')
 
 def get_file_list(file_path, sort_typt="1"):#返回按日期排序的文件列表
@@ -21,7 +21,6 @@ def get_file_list(file_path, sort_typt="1"):#返回按日期排序的文件列�
         if sort_typt == "4":  # 文件名升序文件名降序时间降序
             dir_list = sorted(dir_list, key=lambda x: os.path.getmtime(os.path.join(file_path, x)), reverse=True)
         return dir_list
-
 
 
 
