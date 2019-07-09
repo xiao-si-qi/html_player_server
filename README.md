@@ -7,7 +7,9 @@
 
 网页使用响应式设计，同时适配手机和电脑端。
 
-HTML5 播放器使用是flv.js。由 bilibili 网站开源。HTML5 原生仅支持播放 mp4/webm 格式，flv.js 实现了在 HTML5 上播放 FLV 格式视频。
+HTML5播放器使用 DPlayer。
+[DPlayer项目地址](https://github.com/MoePlayer/DPlayer)
+FLV 视频解码使用flv.js。由 bilibili 网站开源。HTML5 原生仅支持播放 mp4/webm 格式，flv.js 实现了在 HTML5 上播放 FLV 格式视频。
 [flv.js项目地址](https://github.com/bilibili/flv.js)
 
 依赖：
