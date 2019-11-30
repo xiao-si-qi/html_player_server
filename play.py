@@ -1,7 +1,11 @@
 #-*- coding: UTF-8 -*-
 from flask import Flask , url_for,send_from_directory, render_template ,request,redirect
+from flask_cors import CORS
 import os, sys
+
 app = Flask(__name__)
+CORS(app, supports_credentials=True)
+
 video_format = ( 'WEBM', 'MP4', 'OGG','FLV','AAC','MOV','MKV','M3U8')
 photo_format = ( 'JPEG', 'PNG', 'GIF','JPG','BMP')
 
