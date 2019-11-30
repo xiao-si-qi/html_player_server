@@ -28,13 +28,13 @@
     {% include "endBox.html" %}
     <link rel="stylesheet" href="{{ url_for('static', filename='DPlayer.min.css')}}">
     <script src="/static/flv.min.js"></script>
+    <script src="/static/hls.min.js"></script>
     <script src="/static/DPlayer.min.js"></script>
     <script>
         const dp = new DPlayer({
             container: document.getElementById('dplayer'),
             video: {
                 url: '{{ url_for('static', filename='file/' + file_path ) }}',
-                 type: '{{ file_path.split('.')[-1] }}'
             }
         });
 
