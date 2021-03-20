@@ -18,7 +18,7 @@ Flask-SQLAlchemy==2.3.2
 flask-whooshee==0.6.0
 Flask-WTF==0.14.2
 itsdangerous==1.1.0
-Jinja2==2.10.1
+Jinja2==2.11.3
 MarkupSafe==1.1.1
 more-itertools==7.0.0
 Pillow==6.0.0
