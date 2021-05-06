@@ -9,7 +9,7 @@ Faker==1.0.5
 Flask==1.1.1
 Flask-Avatars==0.2.2
 Flask-Bootstrap==3.3.7.1
-Flask-Cors==3.0.8
+Flask-Cors==3.0.9
 Flask-Dropzone==1.5.3
 Flask-Login==0.4.1
 Flask-Mail==0.9.1
