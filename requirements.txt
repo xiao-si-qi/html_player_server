@@ -22,7 +22,7 @@ Jinja2==2.10.1
 MarkupSafe==1.1.1
 more-itertools==7.0.0
 Pillow==6.0.0
-pipenv==2018.11.26
+pipenv==2022.1.8
 pluggy==0.9.0
 py==1.8.0
 PyMySQL==0.9.3
